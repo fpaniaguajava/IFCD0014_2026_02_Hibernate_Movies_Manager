@@ -1,19 +1,24 @@
 package com.cursospring.moviesmanager;
 
-import com.cursospring.moviesmanager.model.Interprete;
-import com.cursospring.moviesmanager.persistence.InterpreteDAO;
+import com.cursospring.moviesmanager.model.Genero;
+import com.cursospring.moviesmanager.model.Pelicula;
+import com.cursospring.moviesmanager.persistence.GeneroDAO;
+import com.cursospring.moviesmanager.persistence.PeliculaDAO;
+import com.cursospring.moviesmanager.persistence.SessionManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String args[]) {
-        InterpreteDAO.startSession();
+        //1. Creación de géneros
+        Genero terror = new Genero("Terror");
+        GeneroDAO.create(terror);
 
-        //1. Creación de intérprete
-        Interprete jack = new Interprete("Jack Nicholson", 1961, "USA");
-        createInterprete(jack);
+        //2. Creación de película
+        Pelicula elResplandor = new Pelicula("El Replandor", "Kubrick", 1978, terror);
+        PeliculaDAO.create(elResplandor);
 
-        InterpreteDAO.finishSession();
-    }
-    private static void createInterprete(Interprete interprete) {
-        InterpreteDAO.create(interprete);
+        SessionManager.finishSession();
     }
 }
