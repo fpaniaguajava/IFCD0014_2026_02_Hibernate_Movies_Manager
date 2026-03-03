@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Genero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idGenero;
+    private int id;
     private String name;
 
     public Genero() {
@@ -17,17 +17,17 @@ public class Genero {
         this.name = name;
     }
 
-    public Genero(int idGenero, String name) {
-        this.idGenero = idGenero;
+    public Genero(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public int getIdGenero() {
-        return idGenero;
+    public int getId() {
+        return id;
     }
 
-    public void setIdGenero(int id) {
-        this.idGenero = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
