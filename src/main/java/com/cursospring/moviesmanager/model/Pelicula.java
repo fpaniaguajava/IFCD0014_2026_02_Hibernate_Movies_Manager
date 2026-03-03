@@ -6,6 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name="t_movie")
+@NamedQuery(
+        name = "Pelicula.findByTitulo",
+        query = "FROM Pelicula p WHERE UPPER(p.titulo) LIKE :cadena"
+)
 public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,5 +79,16 @@ public class Pelicula {
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", director='" + director + '\'' +
+                ", anyo=" + anyo +
+                ", genero=" + genero +
+                '}';
     }
 }

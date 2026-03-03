@@ -11,4 +11,8 @@ public class GeneroDAO extends SessionManager{
         session.getTransaction().commit();
         System.out.println("¡Película creado/a con éxito!");
     }
+    public static Genero read(int id) {
+        startSession();
+        return session.find(Genero.class, id);
+    }
 }
